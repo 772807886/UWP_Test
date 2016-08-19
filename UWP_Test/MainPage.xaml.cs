@@ -12,5 +12,10 @@ namespace UWP_Test {
         {
             this.InitializeComponent();
         }
+
+        private void ToastInput_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e) {
+            ToastInput toastInput = new ToastInput();
+            toastInput.display();
+        }
     }
 }

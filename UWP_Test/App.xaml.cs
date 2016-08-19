@@ -91,5 +91,17 @@ namespace UWP_Test {
             //TODO: 保存应用程序状态并停止任何后台活动
             deferral.Complete();
         }
+
+        protected async override void OnActivated(IActivatedEventArgs e) {
+            base.OnActivated(e);
+            //Toast Input
+            try {
+                if(e.Kind == ActivationKind.ToastNotification) {
+                    ToastNotificationActivatedEventArgs toastArgs = (ToastNotificationActivatedEventArgs)e;
+                    await new Windows.UI.Popups.MessageDialog((string)toastArgs.UserInput["message"], "输入的内容：").ShowAsync();
+                }
+            } catch {
+            }
+        }
     }
 }
